@@ -1,0 +1,52 @@
+<include file="Public:header" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">已预约的讲座</div>
+                <div class="panel-body">
+                    <notempty name="list">
+                    <ul class="media-list talk-topic">
+                        <volist name="list" id="vol">
+                        <li class="media">
+                            <div class="row">
+                                  <div class="col-md-8"><h4>讲座名称：{$vol['ctitle']}</h4></div>
+                                  <div class="col-xs-6 col-md-2 pull-right "><a  class="btn btn-warning" data-toggle="modal" data-target="#{$vol['id']}">取消预约</a></div>
+                            </div>
+                                    <!-- Modal --> 
+                                    <div class="modal fade in" id="{$vol['id']}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-body">
+                                          <h4>确定要取消预约 {$vol['ctitle']}?</h4>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <a class="btn btn-default" data-dismiss="modal">返回</a>
+                                            <a  href="{:U('User/cancel',array('id'=>$vol['id']))}" class="btn btn-danger">确定</a>
+                                          </div>
+                                        </div><!-- /.modal-content -->
+                                      </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+
+                                <div class="row">
+                                   <div class="col-xs-6 col-sm-2">主讲人：{$vol['author']}</div>
+                                  <div class="col-xs-6 col-sm-4 ">讲座地点：{$vol['address']}</div>
+                                  <div class="col-xs-6 col-sm-4">讲座开始时间：{$vol['start_time']|date="Y年m月d日 H点i分",###}</div>
+                                </div>
+
+                        </li>
+                        </volist>
+                    </ul>
+                    <div class="text-center">
+                        {$page}
+                    </div>
+                    <else/>
+                        <span>还没有已预约的讲座信息</span>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />

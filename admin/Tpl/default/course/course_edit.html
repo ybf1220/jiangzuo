@@ -1,0 +1,58 @@
+<tagLib name="tpl" />
+<include file="Public:header" />
+<div class="pad_10">
+<form action="{:u('course/course_edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data">
+<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+	<tr> 
+      <th width="80">讲座名称:</th>
+      <td><input type="text" name="title" id="title" class="input-text" size="40" value="{$info.title}"></td>
+  </tr>
+  <tr> 
+      <th width="80">主讲人:</th>
+      <td><input type="text" name="author" id="author" class="input-text" size="40" value="{$info.author}"></td>
+  </tr>
+	<tr> 
+      <th width="80">讲座地点:</th>
+      <td><input type="text" name="address" id="address" class="input-text" size="40" value="{$info.address}"></td>
+    </tr>
+	<tr> 
+      <th width="80">最多人数:</th>
+      <td><input type="text" name="max_people" id="max_people" class="input-text" size="20" value="{$info.max_people}"></td>
+    </tr>
+    <tr> 
+      <th>开始时间:</th>
+      <td>
+      	<tpl:calendar name="edit_time" ></tpl:calendar>
+      </td>
+    </tr>
+    <tr> 
+      <th>主讲人简介:</th>
+      <td>
+      <textarea rows="2" cols="60" name="author_info">{$info.author_info}</textarea>
+      </td>
+    </tr>
+    <tr> 
+      <th>讲座内容介绍:</th>
+      <td>
+		<textarea rows="5" cols="60" name="intro">{$info.intro}</textarea>
+      </td>
+    </tr>
+</table>
+<input type="hidden" name="id" id="id" value="{$info.id}" />
+<input type="submit" name="dosubmit" id="dosubmit" class="dialog" value=" ">
+</form>
+<script type="text/javascript">
+	$(function(){
+		$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'250',height:'50'}, function(){this.close();$(obj).focus();})}});
+    $("#author").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写主讲人"});
+		$("#edit_time").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写时间"});
+		$("#title").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写名称"});
+		$("#address").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,onerror:"请填写地点"});
+		$("#max_people").formValidator({onshow:"不能为空",onfocus:"不能为空"}).inputValidator({min:1,type: "value",onerror:"请填写每节时长"});
+
+
+	})
+</script>
+</div>
+</body>
+</html>

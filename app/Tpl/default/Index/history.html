@@ -1,0 +1,41 @@
+<include file="Public:header" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">已结束讲座</div>
+                <div class="panel-body">
+                    <notempty name="list">
+                    <ul class="media-list talk-topic">
+                        <volist name="list" id="vol">
+                        <li class="media">
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-6 col-md-8"><h4>讲座名称：{$vol['title']}</h4></div>
+                              <div class=" col-md-1 badge pull-right">已结束</div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-6 col-sm-4">讲座开始时间：{$vol['start_time']|date="Y-m-d H:i",###}</div>
+                              <div class="col-xs-6 col-sm-4">讲座地点：{$vol['address']}</div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-6 col-sm-4 timeago">讲座发布时间：{$vol['add_time']|date="Y-m-d H:i",###}</div>
+                              <div class="col-xs-6 col-sm-4">预约情况：{$vol['people']}人 / {$vol['max_people']}人</div>
+                            </div>
+                        </li>
+                        </volist>
+                    </ul>
+                    <div class="text-center">
+                        {$page}
+                    </div>
+                    <else/>
+                        <span>还没有讲座信息</span>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>

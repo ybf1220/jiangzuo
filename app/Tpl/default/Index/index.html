@@ -1,0 +1,70 @@
+<include file="Public:header" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">最新讲座</div>
+                <div class="panel-body">
+                    <notempty name="list">
+                    <ul class="media-list talk-topic">
+                        <volist name="list" id="vol">
+                        </li-->
+                        <li class="media">
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-6 col-md-8"><a data-toggle="modal" data-target="#{$vol['id']}"><h4>讲座名称：{$vol['title']}</h4></a></div>
+
+                               <!-- Modal --> 
+                                    <div class="modal fade in" id="{$vol['id']}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h5 class="modal-title" id="myModalLabel">讲座名称：{$vol['title']}</h5>
+                                          </div>
+                                            <div class="modal-body">
+                                                <h5>主讲人简介：{$vol['author_info']}</h5>
+            
+                                                <h5>讲座信息：{$vol['intro']}</h5>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                      </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+
+                                <div class="col-xs-6 col-md-4">
+                                    <eq name="check_book[$vol['id']]" value="1">
+                                    <a href="{:U('user/booked')}" class=" btn btn-success pull-right">已预约</a>
+                                    <else/>
+                                    <a href="{:U('user/book',array('cid'=>$vol['id']))}" class="btn btn-info pull-right">点击预约</a>
+                                    </eq>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-xs-6 col-sm-4 timeago">讲座发布时间：{$vol['add_time']|date="Y-m-d H:i",###}</div>
+                              <div class="col-xs-6 col-sm-4">预约情况：{$vol['people']}人 / {$vol['max_people']}人</div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-6 col-sm-4">讲座开始时间：{$vol['start_time']|date="Y-m-d H:i",###}</div>
+                               <div class="col-xs-6 col-sm-4">主讲人：{$vol['author']}</div>
+                              <div class="col-xs-6 col-sm-4">讲座地点：{$vol['address']}</div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-11">简介：{$vol['intro']}</div>
+                            </div>
+                        </li>
+
+                        </volist>
+                    </ul>
+                    <div class="text-center">
+                            {$page}
+                    </div>
+                    <else/>
+                        <span>还没有讲座信息</span>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />

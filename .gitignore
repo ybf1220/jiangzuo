@@ -1,0 +1,7 @@
+admin.ace
+sql/
+statics/assets/
+admin.bak
+.DS_Store
+app/Runtime/*
+admin/Runtime/*

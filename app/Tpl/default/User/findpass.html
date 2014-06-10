@@ -1,0 +1,41 @@
+<include file="Public:header" />
+
+<div class="container">
+	<div class="row">
+		<div class="panel talk-form">
+			<div class="panel-heading">
+			 	找回密码
+		    </div>
+	 		<form id="find-pass" action="{:U('User/findpass')}"  method="post" class="form-horizontal" >
+				<div class="form-group">
+					<label for="email" class="col-md-3 control-label">请输入学号：</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="student_id" name="student_id" placeholder="密码将发送到 学号@stu.zjut.edu.cn">
+
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-3 col-md-6">
+						<button type="submit" class="btn btn-primary">发送邮件</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />
+<script>
+	$("#find-pass").validate({
+	    rules: {
+	        student_id: {
+	            required: true,
+	        },
+	        password: "required",
+	    },
+	    messages: {
+	        student_id: {
+	            required: "用户名不能为空",
+	        },
+	    },
+	});
+</script>

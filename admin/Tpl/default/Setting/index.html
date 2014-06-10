@@ -1,0 +1,43 @@
+<include file="Public:header" />
+<form id="myform" name="myform" action="{:u('Setting/edit')}" enctype="multipart/form-data" method="post">
+  <div class="pad-10">
+    <div class="col-tab">
+      <ul class="tabBut cu-li">
+        <li id="tab_setting_1" class="on" >{:L('site_info')}</li>	
+      </ul>      
+      <div id="div_setting" class="contentList pad-10">
+          <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+              <th width="120">{:L('site_name')} :</th>
+              <td><input type="text" name="site[site_name]" size="80" value="{$set.site_name}"></td>
+            </tr>
+            <tr>
+              <th width="120">{:L('site_domain')} :</th>
+              <td><input type="text" name="site[site_domain]" size="80" value="{$set.site_domain}"></td>
+            </tr>    
+			<tr>
+              <th>{:L('site_title')}:</th>
+              <td><input type="text" name="site[site_title]" size="80" value="{$set.site_title}"></td>
+            </tr>
+            <tr>
+              <th>{:L('site_keyword')} :</th>
+              <td><input type="text" name="site[site_keyword]" size="80" value="{$set.site_keyword}"></td>
+            </tr>
+            <tr>
+              <th>{:L('site_description')} :</th>
+              <td><textarea rows="3" cols="80" name="site[site_description]">{$set.site_description}</textarea></td>
+            </tr> 
+        </table>
+      </div>
+      <div class="bk15"></div>
+      <div class="btn">
+      	<input type="submit" value="{$Think.lang.submit}" onclick="return submitFrom();" name="dosubmit" class="button" id="dosubmit">
+		
+	  </div>
+    </div>
+  </div>
+
+</form>
+
+
+</body></html>

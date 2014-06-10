@@ -1,0 +1,49 @@
+<tagLib name="tpl" />
+<include file="Public:header" />
+<div class="pad_10">
+    <form action="{:u('User/edit')}" method="post" name="myform" id="myform" enctype="multipart/form-data" >
+        <table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+            <tr>
+                <th width="90">学号:</th>
+                <td><input type="text" name="student_id" id="student_id" size="20" value="{$info.student_id}"></td>
+            </tr>
+            <tr>
+                <th width="90">身份证号:</th>
+                <td><input type="text" name="identity" id="identity" size="25" value="{$info.identity}"></td>
+            </tr>
+			<tr>
+				<th width="90">真实姓名 :</th>
+				<td><input type="text" name="name" id="name" size="12" value="{$info.name}"></td>
+			</tr>
+			<tr>
+                <th width="90">手机号码 :</th>
+                <td><input type="text" name="phone" id="phone" size="25" value="{$info.phone}"></td>
+            </tr>
+			<tr>
+                <th width="90">密码 :</th>
+                <td><input type="text" name="pass" size="25" >不修改留空</td>
+            </tr>
+			<tr>
+                <th width="90">性别 :</th>
+                <td><input type="radio" name="gender" value="0" <eq name="info.gender" value="0">checked</eq>>男&nbsp;&nbsp;<input type="radio" name="gender" value="1" <eq name="info.gender" value="1">checked</eq>>女</td>
+            </tr>	
+			<tr>
+                <th width="90">联系地址 :</th>
+                <td><input type="text" name="address"size="40" value="{$info.address}"></td>
+            </tr>		
+			</table>
+		<input type="hidden" name="id" id="id" value="{$info.id}" />
+        <input type="submit" name="dosubmit" id="dosubmit" class="dialog" value="">
+    </form>
+    <script type="text/javascript">
+	$(function(){
+		$.formValidator.initConfig({formid:"myform",autotip:true,onerror:function(msg,obj){window.top.art.dialog({content:msg,lock:true,width:'250',height:'50'}, function(){this.close();$(obj).focus();})}});
+		$("#name").formValidator({onshow:"不能为空",onfocus:"不能超过4个字"}).inputValidator({min:1,onerror:"请填写真实姓名"});
+		$("#identity").formValidator({onshow:"请输入身份证号码",onfocus:"请输入身份证号码"}).inputValidator({min:15,max:18,onerror:"请输入15位或18位数"});
+		$("#phone").formValidator({onshow:"请输入11位手机号码",onfocus:"请输入11位手机号码"}).inputValidator({minlenth:11,maxlenth:11,type:"value",onerror:"请输入11位手机号码"});
+		$("#student_id").formValidator({onshow:"必须输入整数",onfocus:"必须输入整数"}).inputValidator({min:0,type:"value",onerror:"只能输入整数"});
+
+	})
+</script>
+</div>
+</body></html>

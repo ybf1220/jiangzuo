@@ -1,0 +1,84 @@
+<include file="Public:header" />
+<div class="pad-lr-10">
+    <form name="searchform" method="get" >
+    <table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+                <input type="hidden" name="m" value="book" />
+                <input type="hidden" name="a" value="book" />
+				讲座名称 ：
+                <input name="ctitle" type="text" class="input-text" size="25" value="{$ctitle}" />
+
+				学生号 ：
+                <input name="ustudent_id" type="text" class="input-text" size="25" value="{$ustudent_id}" />
+				姓名 :
+                <input name="uname" type="text" class="input-text" size="25" value="{$uname}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <div class="table-list">
+      <table width="100%" cellspacing="0">
+        <thead>
+          <tr>
+          	<th width=50>ID</th>
+            <th>姓名</th>
+            <th>学号</th>
+            <th width=135>联系电话</th>
+            <th width=200>讲座名称</th>
+            <th width=135>开始时间</th>
+            <th width=135>添加时间</th>
+            <th width="100">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <volist name="list" id="val" >
+          <tr>       
+		 	<td align="center">{$val.id}</td>   	
+            <td align="center">{$val.uname}</td>
+            <td align="center">{$val.ustudent_id}</td>
+            <td align="center">{$val.uphone}</td>
+            <td align="center">{$val.ctitle}</td>
+            <td align="center">{$val.start_time|date="Y-m-d H:i",###}</td>
+            <td align="center">{$val.add_time|date="Y-m-d H:i",###}</td>
+
+            <td align="center"><if condition="$val.start_time gt $nowtime"><a href="javascript:edit({$val.id},'{$val.uname}')">取消预约</a><else/>已经开始</if></td>
+          </tr>
+          </volist>
+        </tbody>
+      </table>
+<div class="btn">
+    
+    <div id="pages">{$page}</div>
+    </div>
+      
+    </div>
+</div>
+<script type="text/javascript">
+function edit(id, name) {
+	var lang_edit = "取消预约";
+	window.top.art.dialog({id:'edit'}).close();
+	window.top.art.dialog(
+	{
+		title:lang_edit+'--'+name,
+		id:'edit',
+		iframe:'?m=book&a=cancle_book&id='+id,width:'500',height:'180'
+	}, 
+	function()
+	{
+		var d = window.top.art.dialog({id:'edit'}).data.iframe;
+		d.document.getElementById('dosubmit').click();
+		return false;
+	},
+	function()
+	{
+		window.top.art.dialog({id:'edit'}).close()
+	});
+}
+</script>
+</body></html>

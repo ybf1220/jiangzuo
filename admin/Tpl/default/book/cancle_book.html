@@ -1,0 +1,25 @@
+<include file="Public:header" />
+<div class="pad_10">
+<form action="{:u('book/cancle_book')}" method="post" name="myform" id="myform" enctype="multipart/form-data">
+<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
+	<tr> 
+      <th width="80">ID:</th>
+      <td>{$info.id}</td>
+    </tr>
+	<tr> 
+      <th width="80">会员名称:</th>
+      <td>{$info.uname}</td>
+    </tr>
+	<tr> 
+      <th width="80">添加时间:</th>
+      <td>{$info.add_time|date="Y-m-d H:i",###}</td>
+    </tr>
+	<tr><th></th><td style="color:red;font-size:16px;">确定要取消其预约？</td></tr>
+</table>
+<input type="hidden" name="id" value="{$info['id']}">
+<input type="submit" name="dosubmit" id="dosubmit" class="dialog" value=" ">
+</form>
+
+</div>
+</body>
+</html>

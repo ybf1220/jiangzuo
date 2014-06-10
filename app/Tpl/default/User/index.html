@@ -1,0 +1,80 @@
+<include file="Public:header" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4>账号设置</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#">基本信息</a></li>
+                            <li><a href="{:U('user/password')}">密码安全</a></li>
+                        </ul>
+                        <div class="talk-account">
+                            <form class="form-horizontal" action="{:U('User/index')}"  method="post">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="student_id">学号：</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="identity" name="identity" value="{$user_info['student_id']}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="identity">身份证：</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="identity" name="identity" value="{$user_info['identity']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">姓名：</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="name" name="name" value="{$user_info['name']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="name">邮箱：</label>
+                                        <div class="col-md-4">
+                                            <input type="email" class="form-control" id="email" name="email" value="{$user_info['email']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="gender">性别：</label>
+                                        <div class="col-md-4">
+                                            <input type="radio" name="gender" id="gender" value="0"
+                                                <eq name="user_info['gender']" value="0">checked="checked"</eq> >男
+                                            <input type="radio" name="gender" id="gender" value="1"
+                                                <eq name="user_info['gender']" value="1">checked="checked"</eq>>女
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="phone">联系电话：</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="phone" name="phone" value="{$user_info['phone']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label" for="address">联系地址：</label>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="address" name="address" value="{$user_info['address']}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-6">
+                                            <input type="hidden" name="id" value="{$user_info['id']}">
+
+                                            <button type="submit" class="btn btn-primary">保存</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+
+

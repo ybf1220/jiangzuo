@@ -1,0 +1,93 @@
+<include file="Public:header" />
+
+<div class="container">
+	<div class="row">
+		<div class="panel talk-form">
+	 		<form id="talk-signup" action="{:U('User/signup')}" method="post" class="form-horizontal">
+				<div class="panel-heading">
+					欢迎加入
+				</div>
+				<div class="form-group">
+					<label for="student_id" class="col-md-3 control-label">学号：</label>
+					<div class="col-md-8">
+						<input type="number" class="form-control" id="student_id" name="student_id" value="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="identity" class="col-md-3 control-label">身份证号：</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="identity" name="identity" value="">
+					</div>
+				</div>
+				<div class="form-group">
+			        <label for="password" class="col-md-3 control-label">密码：</label>
+			        <div class="col-md-8">
+						<input type="password" class="form-control" id="password" name="password">
+			        </div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label">姓名：</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control" id="name" name="name" value="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="col-md-3 control-label">邮箱：</label>
+					<div class="col-md-8">
+						<input type="email" class="form-control" id="email" name="email" value="">
+					</div>
+				</div>
+                 <div class="form-group">
+                      <label class="col-md-3 control-label" for="gender">性别：</label>
+                        <div class="col-md-8">
+                            <input type="radio" name="gender" id="gender" value="0" checked="checked">男
+                            <input type="radio" name="gender" id="gender" value="1">女
+                        </div>
+                 </div>
+                 <div class="form-group">
+                       <label class="col-md-3 control-label" for="phone">联系电话：</label>
+                            <div class="col-md-8">
+                               <input type="text" class="form-control" id="phone" name="phone">
+                         </div>
+                 </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="address">联系地址：</label>
+                          <div class="col-md-8">
+                          <input type="text" class="form-control" id="address" name="address">
+                      </div>
+                      </div>
+
+					<div class="form-group">
+					<div class="col-md-offset-3 col-md-2">
+						<button type="submit" class="btn btn-primary">注册</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />
+<script>
+        $("#talk-signup").validate({
+            rules: {
+                password: "required",
+                student_id: "required",
+                email:"required",
+            },
+            messages: {
+                password: {
+                    required: "密码不能为空",
+                },
+                student_id: {
+                    required: "请输入正确的学号"
+                },
+                email: {
+                    required: "邮箱不能为空"
+                }
+            },
+        });
+
+</script>
+
+
+
